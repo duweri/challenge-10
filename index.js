@@ -2,7 +2,6 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const generatelogo = require('./generatelogo');
-const fileName = require('../Develop/logo.svg');
 const {Circle, Square, Triangle} = require('./lib/shape');
 // TODO: Create an array of questions for user input
 const questions = [
@@ -25,7 +24,7 @@ const questions = [
     {
         type: 'input',
         message: 'What colour shape do you want on your logo?',
-        name: 'characters',
+        name: 'fillColour',
     },
 ];
 
