@@ -2,6 +2,8 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const generatelogo = require('./generatelogo');
+const fileName = require('../Develop/logo.svg');
+const {Circle, Square, Triangle} = require('./lib/shape');
 // TODO: Create an array of questions for user input
 const questions = [
     {
@@ -27,12 +29,21 @@ const questions = [
     },
 ];
 
+function writeToFile(fileName, data){
+    var content = generatelogo(data);
+    fs.writeFile(fileName, content, function(error){
+        if(error){
+            return console.log(error);
+        }
+        console.log('Generated logo.svg');
+    });
+}
 
 // to initialise app
 function init() {
-inquirer.prompt(questions).then(answers => {
+inquirer.prompt(questions).then(function (data) {
     const fileName = 'logo.svg';
-    writeToFile(fileName)
+    writeToFile(fileName, data);
     
 });
 };
